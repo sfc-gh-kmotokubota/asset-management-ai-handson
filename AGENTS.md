@@ -73,6 +73,42 @@
 
 銘柄ユニバース（10銘柄）: `NVDA`, `MSFT`, `AAPL`, `GOOGL`, `AMZN`, `META`, `AVGO`, `TSLA`, `JPM`, `XOM`
 
+## Notebook（.ipynb）の記述規約
+
+### セル形式
+
+Snowflake Notebook のセルは以下の形式です。`%%sql` マジックは不要で、
+metadata の `resultVariableName` が結果変数名になります。
+
+```json
+{"metadata": {"kernelspec": {"display_name": "Streamlit Notebook", "name": "streamlit"},
+              "language_info": {"name": "python"}}}
+```
+
+| セル種別 | metadata |
+|---|---|
+| SQL | `{"language": "sql", "resultVariableName": "result_xxx"}` |
+| Python | `{"language": "python"}` |
+| Markdown | `{"codeCollapsed": true, "collapsed": false}` |
+
+### Markdown の書き方
+
+- 見出しは `## n. 大項目` / `### n-m. 小項目`（参考レポと同じレベルを維持する）
+- **引用ブロックの中で見出し（`> ### X`）を使わない。** 引用枠の中で文字が過大に表示されます。
+  `> **X**` と太字にしてください
+- **markdown セルを不必要に分割しない。** 見出しだけの3〜4行セルが連続すると
+  セルの区切りが不自然に見えます。見出しと本文、大項目と小項目は同じセルにまとめる
+- 1セルが40行を超えるようなら分割を検討する
+- 結果セットの列名は日本語のクォート付き別名にする（例: `AS "銘柄"`）
+
+### セル構成の確認
+
+セルを追加・編集したあとは、以下の観点で確認してください。
+
+- markdown セルが連続していないか（連続する場合、それぞれが十分な分量を持っているか）
+- 引用ブロック内に `#` 見出しが混ざっていないか
+- コードフェンス（```）が偶数個で閉じているか
+
 ## Marketplace データを扱う際の重大な注意点
 
 ### データベース名は `SNOWFLAKE_PUBLIC_DATA` に固定
