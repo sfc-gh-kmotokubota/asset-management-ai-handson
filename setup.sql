@@ -49,9 +49,6 @@ USE ROLE ACCOUNTADMIN;
 -- 東京リージョンなど、一部のモデルがローカルに存在しないリージョンでも Cortex を使えるようにします
 ALTER ACCOUNT SET CORTEX_ENABLED_CROSS_REGION = 'ANY_REGION';
 
--- Cortex のモデルオブジェクトを最新化する
-CALL SNOWFLAKE.MODELS.CORTEX_BASE_MODELS_REFRESH();
-
 -- ハンズオン用ウェアハウスを作成する
 CREATE WAREHOUSE IF NOT EXISTS SNOW_AM_WH
     WAREHOUSE_SIZE = 'XSMALL'
