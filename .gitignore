@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Snowflake / ローカル設定
+.snowflake/
+*.local.toml
+
+# エディタ
+.vscode/
+.idea/
